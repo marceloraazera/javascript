@@ -1,0 +1,715 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            #7a2635 0%,
+            #541b28 30%,
+            #2b0d15 65%,
+            #100609 100%
+        );
+
+    color: white;
+    overflow: hidden;
+}
+
+
+/* =========================
+   BRILHO DO FUNDO
+========================= */
+
+body::before {
+    content: "";
+
+    position: fixed;
+
+    width: 600px;
+    height: 600px;
+
+    left: 50%;
+    top: 35%;
+
+    transform: translate(-50%, -50%);
+
+    background: #8b3040;
+
+    filter: blur(150px);
+
+    opacity: 0.28;
+
+    pointer-events: none;
+}
+
+
+/* =========================
+   LATERAIS
+========================= */
+
+.lado-esquerdo,
+.lado-direito {
+    position: fixed;
+
+    width: 180px;
+    height: 100vh;
+
+    background: rgba(91, 24, 39, 0.45);
+
+    filter: blur(30px);
+
+    opacity: 0.7;
+}
+
+.lado-esquerdo {
+    left: -100px;
+}
+
+.lado-direito {
+    right: -100px;
+}
+
+
+/* =========================
+   PRINCIPAL
+========================= */
+
+main {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+}
+
+
+/* =========================
+   TÍTULO LATERAL
+========================= */
+
+.titulo {
+    position: absolute;
+
+    left: 8%;
+    top: 20%;
+
+    width: 190px;
+
+    z-index: 2;
+}
+
+.titulo p {
+    font-size: 9px;
+
+    letter-spacing: 4px;
+
+    color: rgba(255, 255, 255, 0.55);
+
+    margin-bottom: 12px;
+}
+
+.titulo h1 {
+    font-size: 38px;
+
+    line-height: 0.95;
+
+    letter-spacing: 1px;
+
+    font-weight: 500;
+
+    transition: letter-spacing 0.4s;
+}
+
+
+/* Hover do título */
+
+.titulo h1:hover {
+    letter-spacing: 3px;
+}
+
+
+/* =========================
+   CELULAR
+   SEM MOVIMENTO
+========================= */
+
+.celular {
+    position: relative;
+
+    width: 390px;
+    height: 760px;
+
+    padding: 8px;
+
+    border-radius: 52px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #181618,
+            #080708 25%,
+            #040404 60%,
+            #121012
+        );
+
+    border: 2px solid #0c0b0c;
+
+    z-index: 5;
+
+    box-shadow:
+        0 0 0 2px #030303,
+        0 0 0 4px #100f10,
+        inset 0 0 10px rgba(255, 255, 255, 0.05),
+        0 35px 80px rgba(0, 0, 0, 0.85);
+}
+
+
+/* =========================
+   TELA
+========================= */
+
+.tela {
+    width: 100%;
+    height: 100%;
+
+    border-radius: 43px;
+
+    overflow: hidden;
+
+    position: relative;
+
+    background:
+        linear-gradient(
+            160deg,
+            #652331,
+            #401520 48%,
+            #210b12 100%
+        );
+
+    color: white;
+}
+
+
+/* =========================
+   BRILHO DA TELA
+========================= */
+
+.tela::before {
+    content: "";
+
+    position: absolute;
+
+    width: 400px;
+    height: 400px;
+
+    left: -100px;
+    top: 100px;
+
+    background: #a13b4b;
+
+    filter: blur(110px);
+
+    opacity: 0.22;
+
+    pointer-events: none;
+}
+
+
+/* =========================
+   DYNAMIC ISLAND
+   SEM MOVIMENTO
+========================= */
+
+.camera {
+    position: absolute;
+
+    width: 120px;
+    height: 32px;
+
+    top: 10px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    background: #050505;
+
+    border-radius: 20px;
+
+    z-index: 20;
+
+    box-shadow:
+        inset 0 1px 3px rgba(255, 255, 255, 0.08),
+        0 2px 5px rgba(0, 0, 0, 0.6);
+}
+
+
+/* =========================
+   CÂMERA
+========================= */
+
+.camera-lente {
+    position: absolute;
+
+    width: 9px;
+    height: 9px;
+
+    right: 14px;
+    top: 11px;
+
+    border-radius: 50%;
+
+    background: #07131a;
+
+    border: 2px solid #222;
+
+    box-shadow:
+        0 0 5px rgba(75, 130, 150, 0.5);
+}
+
+.camera-ponto {
+    position: absolute;
+
+    width: 5px;
+    height: 5px;
+
+    left: 17px;
+    top: 14px;
+
+    border-radius: 50%;
+
+    background: #222;
+}
+
+
+/* =========================
+   BOTÕES DO CELULAR
+========================= */
+
+.botao-silencioso,
+.botao-volume-1,
+.botao-volume-2,
+.botao-lateral {
+    position: absolute;
+
+    width: 4px;
+
+    background: #171517;
+
+    border-radius: 4px;
+
+    z-index: 2;
+}
+
+.botao-silencioso {
+    left: -6px;
+
+    top: 120px;
+
+    height: 22px;
+}
+
+.botao-volume-1 {
+    left: -6px;
+
+    top: 165px;
+
+    height: 45px;
+}
+
+.botao-volume-2 {
+    left: -6px;
+
+    top: 220px;
+
+    height: 45px;
+}
+
+.botao-lateral {
+    right: -6px;
+
+    top: 175px;
+
+    height: 70px;
+}
+
+
+/* =========================
+   CONTEÚDO
+========================= */
+
+.conteudo {
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 60px 22px 20px;
+}
+
+
+/* =========================
+   TOPO
+========================= */
+
+.topo {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 25px;
+}
+
+.topo h2 {
+    font-size: 21px;
+
+    font-weight: 500;
+
+    letter-spacing: 1px;
+}
+
+.topo span {
+    color: rgba(255, 255, 255, 0.7);
+
+    font-size: 16px;
+}
+
+
+/* =========================
+   ADICIONAR
+========================= */
+
+.adicionar {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    position: relative;
+}
+
+.adicionar input {
+    width: 100%;
+
+    height: 38px;
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    border-radius: 18px;
+
+    padding: 0 15px;
+
+    color: white;
+
+    background: rgba(255, 255, 255, 0.09);
+
+    outline: none;
+
+    font-size: 11px;
+
+    backdrop-filter: blur(12px);
+}
+
+.adicionar input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.adicionar input:focus {
+    border-color: rgba(255, 255, 255, 0.45);
+
+    background: rgba(255, 255, 255, 0.15);
+}
+
+
+/* =========================
+   BOTÃO +
+========================= */
+
+#adicionar {
+    position: absolute;
+    right: 10px;
+
+    bottom: 8px;
+
+    width: 24px;
+    height: 24px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.92);
+
+    color: #4a1520;
+
+    font-size: 23px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 0;
+}
+
+
+/* =========================
+   MENSAGEM
+========================= */
+
+#mensagem {
+    font-size: 10px;
+
+    color: rgba(255, 255, 255, 0.55);
+
+    margin: 18px 5px 10px;
+}
+
+
+/* =========================
+   LISTA
+========================= */
+
+#lista {
+    list-style: none;
+
+    height: 500px;
+
+    overflow-y: auto;
+
+    padding-right: 4px;
+}
+
+#lista::-webkit-scrollbar {
+    width: 3px;
+}
+
+#lista::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+
+    border-radius: 10px;
+}
+
+
+/* =========================
+   CARDS DAS MÚSICAS
+========================= */
+
+#lista li {
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    padding: 9px;
+
+    margin-bottom: 10px;
+
+    border-radius: 17px;
+
+    background: rgba(255, 255, 255, 0.11);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(15px);
+
+    cursor: pointer;
+
+    animation: aparecer 0.4s ease;
+
+    transition: background 0.3s;
+}
+
+
+/* ÚNICO HOVER DOS CARDS */
+
+#lista li:hover {
+    background: rgba(255, 255, 255, 0.20);
+}
+
+
+/* =========================
+   CAPA DA MÚSICA
+========================= */
+
+#lista img {
+    width: 58px;
+    height: 58px;
+
+    object-fit: cover;
+
+    border-radius: 11px;
+
+    background: rgba(255, 255, 255, 0.15);
+}
+
+
+/* =========================
+   NOME DA MÚSICA
+========================= */
+
+#lista span {
+    flex: 1;
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+    color: white;
+}
+
+
+/* =========================
+   CORAÇÃO
+========================= */
+
+#lista li button:first-of-type {
+    border: none;
+
+    background: transparent;
+
+    color: rgba(255, 255, 255, 0.7);
+
+    font-size: 21px;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   APAGAR
+========================= */
+
+#lista li button:last-of-type {
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    background: rgba(0, 0, 0, 0.2);
+
+    color: rgba(255, 255, 255, 0.65);
+
+    border-radius: 9px;
+
+    padding: 6px 8px;
+
+    font-size: 8px;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   ANIMAÇÃO AO ADICIONAR
+========================= */
+
+@keyframes aparecer {
+
+    from {
+        opacity: 0;
+
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================
+   TEXTO LATERAL
+========================= */
+
+.texto-lateral {
+    position: absolute;
+
+    right: 9%;
+    bottom: 19%;
+
+    text-align: right;
+}
+
+.texto-lateral p {
+    font-size: 9px;
+
+    letter-spacing: 4px;
+
+    color: rgba(255, 255, 255, 0.4);
+
+    margin-bottom: 10px;
+}
+
+.texto-lateral span {
+    font-size: 25px;
+
+    line-height: 1;
+
+    color: rgba(255, 255, 255, 0.85);
+
+    transition:
+        color 0.4s,
+        letter-spacing 0.4s;
+}
+
+
+/* Hover do texto lateral */
+
+.texto-lateral:hover span {
+    color: #e0a0aa;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 900px) {
+
+    .titulo,
+    .texto-lateral {
+        display: none;
+    }
+
+    .celular {
+        width: 370px;
+        height: 720px;
+    }
+}
+
+@media (max-width: 450px) {
+
+    body {
+        overflow: auto;
+    }
+
+    .lado-esquerdo,
+    .lado-direito {
+        display: none;
+    }
+
+    .celular {
+        width: 95%;
+        height: 700px;
+    }
+}
