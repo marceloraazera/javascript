@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f4eee0">
+    <title>Minha Pokédex</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main class="pokedex">
+        <header class="page-header">
+            <p class="edition">Arquivo de campo <span>nº 001</span></p>
+            <h1>Minha <span>Pokédex</span></h1>
+            <p class="subtitle">Uma coleção de encontros extraordinários.</p>
+        </header>
+
+        <section class="search" aria-label="Buscar Pokémon">
+            <label for="input">Quem vamos encontrar?</label>
+            <div class="search-controls">
+                <input type="text" id="input" placeholder="Ex.: pikachu" autocomplete="off">
+                <button id="botao" type="button" aria-label="Buscar Pokémon">
+                    <span>Buscar</span>
+                    <span class="search-icon" aria-hidden="true">↗</span>
+                </button>
+            </div>
+        </section>
+
+        <div id="resultado" aria-live="polite"></div>
+        <p class="footnote">POKÉDEX DE CAMPO <span>•</span> KANTO &amp; ALÉM</p>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
