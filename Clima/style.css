@@ -1,0 +1,217 @@
+:root {
+	color-scheme: light;
+	--ink: #263c50;
+	--muted: #738797;
+	--blue: #6689a3;
+	--blue-deep: #385c78;
+	--line: #d7e2e8;
+	--surface: #ffffff;
+	--canvas: #edf3f5;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	display: grid;
+	grid-template-columns: minmax(0, 575px) 145px;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+	min-height: 100vh;
+	width: auto;
+	margin: 0;
+	padding: 56px 20px;
+	color: var(--ink);
+	background:
+		radial-gradient(ellipse at 78% 18%, rgb(199 218 226 / 55%), transparent 34%),
+		radial-gradient(ellipse at 14% 82%, rgb(213 226 229 / 62%), transparent 38%),
+		var(--canvas);
+	font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+}
+
+h1 {
+	grid-column: 1 / -1;
+	width: 100%;
+	margin: 0 0 30px;
+	color: var(--ink);
+	font-family: Georgia, "Times New Roman", serif;
+	font-size: clamp(36px, 8vw, 52px);
+	font-weight: 600;
+	line-height: 1.08;
+	text-align: center;
+}
+
+h1::before {
+	display: block;
+	margin-bottom: 12px;
+	color: var(--blue);
+	content: "BOLETIM METEOROLÓGICO  /  AO VIVO";
+	font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+	font-size: 11px;
+	font-weight: 800;
+	letter-spacing: 1.6px;
+}
+
+#input,
+#buscar {
+	height: 52px;
+	border-radius: 7px;
+	font: inherit;
+}
+
+#input {
+	width: 100%;
+	padding: 0 16px;
+	border: 1px solid #c8d6de;
+	outline: none;
+	color: var(--ink);
+	background: var(--surface);
+	box-shadow: 0 5px 18px rgb(48 73 91 / 5%);
+	transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+#input::placeholder {
+	color: #91a1ac;
+}
+
+#input:focus {
+	border-color: var(--blue);
+	box-shadow: 0 0 0 3px rgb(102 137 163 / 17%);
+}
+
+#buscar {
+	width: 100%;
+	margin: 0;
+	padding: 0 18px;
+	border: 1px solid var(--blue-deep);
+	color: #fff;
+	background: var(--blue-deep);
+	font-size: 14px;
+	font-weight: 700;
+	cursor: pointer;
+	transition: background-color 160ms ease, transform 160ms ease;
+}
+
+#buscar:hover {
+	background: #2e4d65;
+	transform: translateY(-1px);
+}
+
+#buscar:focus-visible {
+	outline: 3px solid #9db5c5;
+	outline-offset: 3px;
+}
+
+#resultado:empty {
+	display: none;
+}
+
+#resultado {
+	grid-column: 1 / -1;
+	width: 100%;
+	margin-top: 26px;
+	padding: 26px;
+	border: 1px solid var(--line);
+	border-radius: 10px;
+	background: rgb(255 255 255 / 88%);
+	box-shadow: 0 14px 36px rgb(47 73 90 / 8%);
+	animation: arrive 300ms ease both;
+}
+
+#resultado h2:first-of-type {
+	margin: 0 0 16px;
+	color: var(--muted);
+	font-size: 14px;
+	font-weight: 700;
+}
+
+#resultado h2:nth-of-type(2) {
+	margin: 0 0 8px;
+	color: var(--blue-deep);
+	font-family: Georgia, "Times New Roman", serif;
+	font-size: 29px;
+	font-weight: 600;
+}
+
+#resultado p {
+	margin: 0;
+	color: var(--ink);
+	font-size: 18px;
+	font-weight: 700;
+}
+
+#resultado ul {
+	display: grid;
+	grid-template-columns: repeat( auto-fit, minmax(150px, 1fr) );
+	gap: 9px;
+	margin: 24px 0 0;
+	padding: 18px 0 0;
+	border-top: 1px solid var(--line);
+	list-style: none;
+}
+
+#resultado li {
+	min-height: 62px;
+	padding: 12px;
+	border: 1px solid #e0e9ed;
+	border-radius: 6px;
+	color: #496174;
+	background: #f4f8f9;
+	font-size: 13px;
+	font-weight: 700;
+	line-height: 1.5;
+}
+
+#resultado:not(:has(ul)) {
+	color: var(--blue-deep);
+	font-size: 15px;
+	font-weight: 700;
+}
+
+@keyframes arrive {
+	from {
+		opacity: 0;
+		transform: translateY(7px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@media (max-width: 680px) {
+	body {
+		grid-template-columns: minmax(0, 1fr);
+		align-content: start;
+		padding: 15vh 16px 40px;
+	}
+
+	h1 {
+		margin-bottom: 24px;
+	}
+
+	h1::before {
+		font-size: 9px;
+	}
+
+	#input,
+	#buscar {
+		width: 100%;
+		margin: 0;
+	}
+
+	#buscar {
+		margin-top: 9px;
+	}
+
+	#resultado {
+		margin-top: 22px;
+		padding: 20px;
+	}
+
+	#resultado ul {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
